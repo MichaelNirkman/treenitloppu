@@ -15,7 +15,7 @@ function getBikes(bike_id, titleTarget, statusTarget, colorTarget){
           var color = "";
           if(bikesAvailable<=Math.round(totalAvailable/3) && bikesAvailable > 0){
             color = "niceText orange"
-          } else if(bikesAvailable>=Math.round(totalAvailable/3)){
+          } else if(bikesAvailable>Math.round(totalAvailable/3)){
               color = "niceText green"
           } else {
               color="niceText red"
