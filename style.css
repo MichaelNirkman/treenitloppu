@@ -6,6 +6,7 @@
 .flexContainer{
     display: flex;
     flex-wrap: wrap;
+    padding-left: 15px;
 }
 
 h1{
@@ -13,7 +14,7 @@ h1{
 }
 
 h2{
-    font-size: 30px;
+    font-size: 50px;
 }
 
 .red{
@@ -33,30 +34,28 @@ h2{
     text-shadow: 2px 2px black;
 }
 
-.bikeTitle{
-    font-size: 25px;
+.stationTitle{
+    font-size: 40px;
+    padding: 10px;
+}
+
+.center{
+    text-align: center;
+    margin:auto;
+}
+
+.stationStatus{
+    font-size: 45px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .bikeContainer{
     flex-wrap: nowrap;
+    box-shadow: 3px 3px black;
+    background-color: darkslategray;
 }
 
 .bikeBlock{
-    max-width: 230px;
+    max-width: 400px;
 }
-
-.sliding-background {
-    background: url("VITTUUN.jpg") repeat-x;
-    height: 560px;
-    width: 5076px;
-    animation: slide 60s linear infinite;
-  }
-  
-  @keyframes slide{
-    0%{
-      transform: translate3d(0, 0, 0);
-    }
-    100%{
-      transform: translate3d(-1692px, 0, 0);
-    }
-  }
