@@ -1,0 +1,62 @@
+.mainbod{
+    background-image: linear-gradient(rgb(75, 153, 167), rgb(133, 165, 224));
+    font-family: 'Russo One', sans-serif;
+}
+
+.flexContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1{
+    font-size: 40px;
+}
+
+h2{
+    font-size: 30px;
+}
+
+.red{
+    background-color: red;
+}
+
+.orange{
+    background-color: darkorange;
+}
+
+.green{
+    background-color: green;
+}
+
+.niceText{
+    color:white;
+    text-shadow: 2px 2px black;
+}
+
+.bikeTitle{
+    font-size: 25px;
+}
+
+.bikeContainer{
+    flex-wrap: nowrap;
+}
+
+.bikeBlock{
+    max-width: 230px;
+}
+
+.sliding-background {
+    background: url("VITTUUN.jpg") repeat-x;
+    height: 560px;
+    width: 5076px;
+    animation: slide 60s linear infinite;
+  }
+  
+  @keyframes slide{
+    0%{
+      transform: translate3d(0, 0, 0);
+    }
+    100%{
+      transform: translate3d(-1692px, 0, 0);
+    }
+  }
