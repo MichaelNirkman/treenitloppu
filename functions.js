@@ -29,7 +29,7 @@ function getBikes(bike_id, titleTarget, statusTarget, colorTarget){
   }
   
   function initializeData(ms=15000){
-      updateData()
+      updateData();
       setInterval(function(){
         updateData()
     }, ms);
