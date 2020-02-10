@@ -9,11 +9,9 @@ function getBikes(bike_id, titleTarget, statusTarget, colorTarget){
       })
       .then(function(myJson) {
           var stationName = myJson.data.bikeRentalStation.name;
-          /*var bikesAvailable = myJson.data.bikeRentalStation.bikesAvailable;
+          var bikesAvailable = myJson.data.bikeRentalStation.bikesAvailable;
           var spacesAvailable = myJson.data.bikeRentalStation.spacesAvailable;
-          var totalAvailable = bikesAvailable+spacesAvailable;*/
-          var bikesAvailable = 3;
-          var totalAvailable = 10;
+          var totalAvailable = bikesAvailable+spacesAvailable;
           var color = "";
           if(bikesAvailable<=Math.round(totalAvailable/3) && bikesAvailable > 0){
             color = "niceText orange"
