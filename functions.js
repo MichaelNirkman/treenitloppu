@@ -73,7 +73,7 @@ function getBuses() {
                 var date_diff = curdate - date;
                 var diff_minutes = 60 - (Math.round(((date_diff % 86400000) % 3600000) / 60000)); // minutes
                 var convertedTime = date.toISOString().substr(11, 5);
-                if (diff_minutes < 10) {
+                if (diff_minutes < 25) {
                     convertedTime = diff_minutes + " min"
                 }
                 busNumber.innerHTML = myJson.data.stop.stoptimesWithoutPatterns[i].trip.route.shortName;
