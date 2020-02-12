@@ -59,8 +59,14 @@ function getBuses() {
         .then(function(myJson) {
             var table = document.createElement("table");
             table.id = "timetable";
+            table.className = "bustable"
             for (i = 0; i < myJson.data.stop.stoptimesWithoutPatterns.length; i++) {
                 var row = table.insertRow(i);
+                if (i % 2 != 0) {
+                    row.className = "tablerow blue";
+                } else {
+                    row.className = "tablerow darkerblue";
+                }
                 var busNumber = row.insertCell(0);
                 busNumber.className = "busNumber niceText";
                 var routeName = row.insertCell(1);
@@ -85,6 +91,46 @@ function getBuses() {
         });
 }
 
+function getMetro() {
+    fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: '{  stop(id: "HSL:1431601") {    name      stoptimesWithoutPatterns {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(myJson) {
+            var table = document.createElement("table");
+            table.id = "metro_timetable";
+            for (i = 0; i < myJson.data.stop.stoptimesWithoutPatterns.length; i++) {
+                var row = table.insertRow(i);
+                if (i % 2 != 0) {
+                    row.className = "tablerow orange";
+                } else {
+                    row.className = "tablerow darkerorange";
+                }
+                var routeName = row.insertCell(0);
+                routeName.className = "busNumber niceText";
+                var time = row.insertCell(1);
+                time.className = "time niceText";
+                var date = new Date(null);
+                var curdate = new Date();
+                date.setSeconds(curdate.getSeconds() + parseInt(myJson.data.stop.stoptimesWithoutPatterns[i].realtimeDeparture)); // specify value for SECONDS here
+                var date_diff = curdate - date;
+                var diff_minutes = 60 - (Math.round(((date_diff % 86400000) % 3600000) / 60000)); // minutes
+                var convertedTime = date.toISOString().substr(11, 5);
+                if (diff_minutes < 25) {
+                    convertedTime = diff_minutes + " min"
+                }
+                routeName.innerHTML = myJson.data.stop.stoptimesWithoutPatterns[i].headsign;
+                time.innerHTML = convertedTime;
+            }
+            var oldtable = document.getElementById("metro_timetable");
+            oldtable.parentNode.replaceChild(table, oldtable);
+        });
+}
+
 function initializeData(ms = 15000) {
     startTime();
     updateData();
@@ -97,4 +143,5 @@ function updateData() {
     getBikes("256", "stationTitle1", "stationStatus1", "bikeblock1");
     getBikes("259", "stationTitle2", "stationStatus2", "bikeblock2");
     getBuses();
+    getMetro();
 }

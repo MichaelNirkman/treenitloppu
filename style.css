@@ -38,6 +38,14 @@ h2 {
     background-color: green;
 }
 
+.blue {
+    background-color: dodgerblue;
+}
+
+.darkerblue {
+    background-color: rgb(17, 88, 158);
+}
+
 .niceText {
     color: white;
     text-shadow: 2px 2px black;
@@ -65,23 +73,25 @@ h2 {
 }
 
 .container+.container {
-    margin-left: 5%;
-}
-
-.bikeBlock {
-    max-width: 400px;
-}
-
-.bus {
-    background-color: dodgerblue;
-    padding: 10px;
+    margin-left: 10%;
 }
 
 .busNumber {
     font-size: 50px;
-    padding-right: 5px;
 }
 
 .time {
     font-size: 45px;
+}
+
+.orange {
+    background-color: darkorange;
+}
+
+.darkerorange {
+    background-color: rgb(155, 85, 0);
+}
+
+.bus {
+    flex-grow: 1;
 }
