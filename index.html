@@ -8,12 +8,14 @@
 </head>
 
 <body class="mainbod" onload="initializeData(15000)">
-    <div name="mainheading" class="niceText upperrow">
-        <h1>Herttoniemi Cheat Sheet</h1>
-        <span id="currentTime" class="currentTime"></span>
-    </div>
+
     <div class="flexContainer">
-        <div class="container bike">
+        <div name="mainheading" class="niceText upperrow">
+            <h1>Herttoniemi Cheat Sheet<br>Mikko Nirkko 2020</h1>
+        </div>
+        <span id="currentTime" class="currentTime niceText"></span>
+        <span></span>
+        <div class="container container1 bike">
             <h2 class="niceText center">Tsygät</h2>
             <div id="bikeblock1" class="bikeblock niceText">
                 <span id="stationTitle1" class="stationTitle"></span>
@@ -24,17 +26,17 @@
                 <span id="stationStatus2" class="stationStatus"></span>
             </div>
         </div>
-        <div class="container">
+        <div class="container container2">
             <h2 class="niceText center">Dösät</h2>
             <div class="niceText bus" id="bus">
-                <table id="timetable" class="stationTitle niceText"></table>
+                <table id="timetable" class="niceText"></table>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container container3">
             <h2 class="niceText center">Metukka itään</h2>
             <div class="niceText metro" id="metukka">
-                <table id="metro_timetable" class="stationTitle niceText"></table>
+                <table id="metro_timetable" class="niceText"></table>
             </div>
         </div>
     </div>

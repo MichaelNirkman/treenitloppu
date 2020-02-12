@@ -4,9 +4,10 @@
 }
 
 .flexContainer {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+    grid-auto-rows: minmax(100px, auto);
 }
 
 .upperrow {
@@ -15,7 +16,7 @@
 
 .currentTime {
     font-size: 80px;
-    margin-left: 25%;
+    margin: auto;
 }
 
 h1 {
@@ -63,21 +64,19 @@ h2 {
 
 .stationStatus {
     font-size: 60px;
-    padding-left: 15px;
     padding-right: 15px;
 }
 
 .container {
     box-shadow: 3px 3px black;
     background-color: darkslategray;
-}
-
-.container+.container {
-    margin-left: 8%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
 }
 
 .busNumber {
-    font-size: 50px;
+    font-size: 60px;
 }
 
 .time {
@@ -90,10 +89,6 @@ h2 {
 
 .darkerorange {
     background-color: rgb(155, 85, 0);
-}
-
-.bus {
-    flex-grow: 1;
 }
 
 td {
