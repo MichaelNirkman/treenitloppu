@@ -51,7 +51,7 @@ function getBuses() {
     fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query: '{  stop(id: "HSL:1431102") {    name      stoptimesWithoutPatterns {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
+            body: JSON.stringify({ query: '{  stop(id: "HSL:1431102") {    name      stoptimesWithoutPatterns(numberOfDepartures: 7) {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
         })
         .then(function(response) {
             return response.json();
@@ -95,7 +95,7 @@ function getMetro() {
     fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query: '{  stop(id: "HSL:1431601") {    name      stoptimesWithoutPatterns {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
+            body: JSON.stringify({ query: '{  stop(id: "HSL:1431601") {    name      stoptimesWithoutPatterns(numberOfDepartures: 7) {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
         })
         .then(function(response) {
             return response.json();
