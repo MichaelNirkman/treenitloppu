@@ -1,61 +1,87 @@
-.mainbod{
+.mainbod {
     background-image: linear-gradient(rgb(75, 153, 167), rgb(133, 165, 224));
     font-family: 'Russo One', sans-serif;
 }
 
-.flexContainer{
+.flexContainer {
     display: flex;
     flex-wrap: wrap;
-    padding-left: 15px;
+    padding: 15px;
 }
 
-h1{
+.upperrow {
+    display: flex;
+}
+
+.currentTime {
+    font-size: 80px;
+    margin-left: 15%;
+}
+
+h1 {
     font-size: 40px;
 }
 
-h2{
+h2 {
     font-size: 50px;
 }
 
-.red{
+.red {
     background-color: red;
 }
 
-.orange{
+.orange {
     background-color: darkorange;
 }
 
-.green{
+.green {
     background-color: green;
 }
 
-.niceText{
-    color:white;
+.niceText {
+    color: white;
     text-shadow: 2px 2px black;
 }
 
-.stationTitle{
+.stationTitle {
     font-size: 40px;
     padding: 10px;
 }
 
-.center{
+.center {
     text-align: center;
-    margin:auto;
+    margin: auto;
 }
 
-.stationStatus{
+.stationStatus {
     font-size: 45px;
     padding-left: 15px;
     padding-right: 15px;
 }
 
-.bikeContainer{
-    flex-wrap: nowrap;
+.container {
     box-shadow: 3px 3px black;
     background-color: darkslategray;
 }
 
-.bikeBlock{
+.container+.container {
+    margin-left: 5%;
+}
+
+.bikeBlock {
     max-width: 400px;
+}
+
+.bus {
+    background-color: dodgerblue;
+    padding: 10px;
+}
+
+.busNumber {
+    font-size: 50px;
+    padding-right: 5px;
+}
+
+.time {
+    font-size: 45px;
 }
