@@ -79,7 +79,7 @@ function getBuses() {
                 }
                 var date = new Date(null);
                 var curdate = new Date();
-                date.setSeconds(curdate.getSeconds() + parseInt(myJson.data.stop.stoptimesWithoutPatterns[i].realtimeDeparture)); // specify value for SECONDS here
+                date.setSeconds(curdate.getSeconds() + parseInt(timeSecs)); // specify value for SECONDS here
                 var date_diff = curdate - date;
                 var diff_minutes = 60 - (Math.round(((date_diff % 86400000) % 3600000) / 60000)); // minutes
                 var convertedTime = date.toISOString().substr(11, 5);
