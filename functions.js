@@ -73,6 +73,10 @@ function getBuses() {
                 routeName.className = "routeName niceText";
                 var time = row.insertCell(2);
                 time.className = "time niceText";
+                var timeSecs = myJson.data.stop.stoptimesWithoutPatterns[i].realtimeDeparture;
+                if (timeSecs > myJson.data.stop.stoptimesWithoutPatterns[i].scheduledDeparture) {
+                    time.className += " late";
+                }
                 var date = new Date(null);
                 var curdate = new Date();
                 date.setSeconds(curdate.getSeconds() + parseInt(myJson.data.stop.stoptimesWithoutPatterns[i].realtimeDeparture)); // specify value for SECONDS here
@@ -114,9 +118,10 @@ function getMetro() {
                 routeName.className = "busNumber niceText";
                 var time = row.insertCell(1);
                 time.className = "time niceText";
+                var timeSecs = myJson.data.stop.stoptimesWithoutPatterns[i].realtimeDeparture;
                 var date = new Date(null);
                 var curdate = new Date();
-                date.setSeconds(curdate.getSeconds() + parseInt(myJson.data.stop.stoptimesWithoutPatterns[i].realtimeDeparture)); // specify value for SECONDS here
+                date.setSeconds(curdate.getSeconds() + parseInt(timeSecs)); // specify value for SECONDS here
                 var date_diff = curdate - date;
                 var diff_minutes = 60 - (Math.round(((date_diff % 86400000) % 3600000) / 60000)); // minutes
                 var convertedTime = date.toISOString().substr(11, 5);

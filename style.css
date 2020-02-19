@@ -83,6 +83,11 @@ h2 {
     font-size: 45px;
 }
 
+.late {
+    font-style: italic;
+    color: yellow;
+}
+
 .orange {
     background-color: darkorange;
 }
