@@ -46,7 +46,7 @@ function checkTime(i) {
     if (i < 10) { i = "0" + i }; // add zero in front of numbers < 10
     return i;
 }
-
+//yee
 function getBuses() {
     fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
             method: 'POST',
