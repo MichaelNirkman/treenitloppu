@@ -15,6 +15,10 @@
     grid-auto-rows: minmax(100px, auto);
 }
 
+.footer {
+    display: block;
+}
+
 @media (min-width:1000px) {
     .mainContainer {
         display: grid;
@@ -31,11 +35,15 @@
         display: flex;
         flex-direction: column;
     }
+    .footer {
+        display: none;
+    }
 }
 
 .leftStuff {
     display: grid;
     grid-auto-flow: row;
+    grid-gap: 10px;
 }
 
 .currentTime {
