@@ -3,15 +3,39 @@
     font-family: 'Russo One', sans-serif;
 }
 
-.flexContainer {
+.topContainer {
+    display: none;
+}
+
+.mainContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: row;
+    justify-items: center;
     grid-gap: 40px;
     grid-auto-rows: minmax(100px, auto);
 }
 
-.upperrow {
-    display: flex;
+@media (min-width:1000px) {
+    .mainContainer {
+        display: grid;
+        grid-auto-flow: column;
+        justify-items: center;
+    }
+    .topContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 40px;
+        grid-auto-rows: minmax(100px, auto);
+    }
+    .leftStuff {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.leftStuff {
+    display: grid;
+    grid-auto-flow: row;
 }
 
 .currentTime {
@@ -24,7 +48,12 @@ h1 {
 }
 
 h2 {
-    font-size: 50px;
+    font-size: 40px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
 }
 
 .red {
@@ -53,8 +82,10 @@ h2 {
 }
 
 .stationTitle {
-    font-size: 40px;
-    padding: 10px;
+    font-size: 30px;
+    background-color: navy;
+    display: block;
+    text-align: center;
 }
 
 .center {
@@ -63,24 +94,31 @@ h2 {
 }
 
 .stationStatus {
-    font-size: 60px;
-    padding-right: 15px;
+    font-size: 30px;
+    width: 100%;
+    display: block;
+    text-align: center;
 }
 
 .container {
     box-shadow: 3px 3px black;
     background-color: darkslategray;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
 }
 
 .busNumber {
     font-size: 60px;
 }
 
-.time {
+.metroNumber {
+    font-size: 30px;
+}
+
+.bustime {
     font-size: 45px;
+}
+
+.metrotime {
+    font-size: 40px;
 }
 
 .late {
@@ -90,6 +128,14 @@ h2 {
 
 .orange {
     background-color: darkorange;
+}
+
+.blacktext {
+    color: black;
+}
+
+.bikeicon {
+    letter-spacing: 5px;
 }
 
 .darkerorange {

@@ -12,6 +12,10 @@ function getBikes(bike_id, titleTarget, statusTarget, colorTarget) {
             var bikesAvailable = myJson.data.bikeRentalStation.bikesAvailable;
             var spacesAvailable = myJson.data.bikeRentalStation.spacesAvailable;
             var totalAvailable = bikesAvailable + spacesAvailable;
+
+            var statusarea = document.getElementById(statusTarget);
+            statusarea.innerHTML = "";
+
             var color = "";
             if (bikesAvailable <= Math.round(totalAvailable / 3) && bikesAvailable > 0) {
                 color = "niceText orange"
@@ -20,13 +24,18 @@ function getBikes(bike_id, titleTarget, statusTarget, colorTarget) {
             } else {
                 color = "niceText red"
             }
-            var bikeAmnt = bikesAvailable + " / " + totalAvailable;
             if (bikesAvailable == 0 && totalAvailable == 0) {
-                bikeAmnt = "X"
+                statusarea.innerHTML = "Ei käytössä"
+            } else {
+                for (i = 0; i < bikesAvailable; i++) {
+                    statusarea.innerHTML += '<i class="fas fa-bicycle bikeicon"></i>'
+                }
+                for (u = 0; u < spacesAvailable; u++) {
+                    statusarea.innerHTML += '<i class="fas fa-bicycle bikeicon blacktext"></i>'
+                }
             }
-            document.getElementById(colorTarget).className = color;
             document.getElementById(titleTarget).innerHTML = stationName;
-            document.getElementById(statusTarget).innerHTML = bikeAmnt;
+            statusarea.className = "stationStatus " + color;
         });
 }
 
@@ -47,11 +56,11 @@ function checkTime(i) {
     return i;
 }
 
-function getBuses() {
+function getBuses(amnt) {
     fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query: '{  stop(id: "HSL:1431102") {    name      stoptimesWithoutPatterns(numberOfDepartures: 7) {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
+            body: JSON.stringify({ query: '{  stop(id: "HSL:1431102") {    name      stoptimesWithoutPatterns(numberOfDepartures: ' + amnt + ') {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
         })
         .then(function(response) {
             return response.json();
@@ -72,7 +81,7 @@ function getBuses() {
                 var routeName = row.insertCell(1);
                 routeName.className = "routeName niceText";
                 var time = row.insertCell(2);
-                time.className = "time niceText";
+                time.className = "bustime niceText";
                 var timeSecs = myJson.data.stop.stoptimesWithoutPatterns[i].realtimeDeparture;
                 if (timeSecs > myJson.data.stop.stoptimesWithoutPatterns[i].scheduledDeparture) {
                     time.className += " late";
@@ -95,18 +104,18 @@ function getBuses() {
         });
 }
 
-function getMetro() {
+function getMetro(statid, amnt, direction) {
     fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query: '{  stop(id: "HSL:1431601") {    name      stoptimesWithoutPatterns(numberOfDepartures: 7) {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
+            body: JSON.stringify({ query: '{  stop(id: ' + statid + ') {    name      stoptimesWithoutPatterns(numberOfDepartures: ' + amnt + ') {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
         })
         .then(function(response) {
             return response.json();
         })
         .then(function(myJson) {
             var table = document.createElement("table");
-            table.id = "metro_timetable";
+            table.id = direction;
             for (i = 0; i < myJson.data.stop.stoptimesWithoutPatterns.length; i++) {
                 var row = table.insertRow(i);
                 if (i % 2 != 0) {
@@ -115,9 +124,9 @@ function getMetro() {
                     row.className = "tablerow darkerorange";
                 }
                 var routeName = row.insertCell(0);
-                routeName.className = "busNumber niceText";
+                routeName.className = "metroNumber niceText";
                 var time = row.insertCell(1);
-                time.className = "time niceText";
+                time.className = "metrotime niceText";
                 var timeSecs = myJson.data.stop.stoptimesWithoutPatterns[i].realtimeDeparture;
                 var date = new Date(null);
                 var curdate = new Date();
@@ -131,7 +140,7 @@ function getMetro() {
                 routeName.innerHTML = myJson.data.stop.stoptimesWithoutPatterns[i].headsign;
                 time.innerHTML = convertedTime;
             }
-            var oldtable = document.getElementById("metro_timetable");
+            var oldtable = document.getElementById(direction);
             oldtable.parentNode.replaceChild(table, oldtable);
         });
 }
@@ -145,8 +154,9 @@ function initializeData(ms = 15000) {
 }
 
 function updateData() {
-    getBikes("256", "stationTitle1", "stationStatus1", "bikeblock1");
-    getBikes("259", "stationTitle2", "stationStatus2", "bikeblock2");
-    getBuses();
-    getMetro();
+    getBikes("256", "stationTitle1", "stationStatus1");
+    getBikes("259", "stationTitle2", "stationStatus2");
+    getBuses(7);
+    getMetro('"HSL:1431601"', 2, "metro_timetable_e");
+    getMetro('"HSL:1431602"', 2, "metro_timetable_w");
 }

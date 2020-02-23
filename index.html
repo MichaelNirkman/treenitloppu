@@ -2,48 +2,60 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/all.css">
     <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
     <title>Herttoniemi launchpad</title>
 </head>
 
 <body class="mainbod" onload="initializeData(15000)">
 
-    <div class="flexContainer">
-        <div name="mainheading" class="niceText upperrow">
-            <h1>Herttoniemi Cheat Sheet<br>Mikko Nirkko 2020</h1>
+    <div class="topContainer">
+        <div name="mainheading" class="niceText mainheading">
+            <h1>Herttoniemi Cheat Sheet<br>Mikko Nirkko 2020 <i class="fas fa-bicycle"></i></h1>
         </div>
-        <span id="currentTime" class="currentTime niceText"></span>
+        <span id="currentTime" class="currentTime niceText mainheading"></span>
         <span></span>
-        <div class="container container1 bike">
-            <h2 class="niceText center">Tsygät</h2>
-            <div id="bikeblock1" class="bikeblock niceText">
-                <span id="stationTitle1" class="stationTitle"></span>
-                <span id="stationStatus1" class="stationStatus"></span>
+    </div>
+    <div class="mainContainer">
+        <div class="leftStuff">
+            <div class="container bikes">
+                <h2 class="niceText center">Tsygät</h2>
+                <div id="bikeblock1" class="niceText">
+                    <span id="stationTitle1" class="stationTitle"></span>
+                    <span id="stationStatus1" class="stationStatus"></span>
+                </div>
+                <br>
+                <div id="bikeblock2" class="niceText">
+                    <span id="stationTitle2" class="stationTitle"></span>
+                    <span id="stationStatus2" class="stationStatus"></span>
+                </div>
             </div>
-            <div id="bikeblock2" class="bikeblock niceText">
-                <span id="stationTitle2" class="stationTitle"></span>
-                <span id="stationStatus2" class="stationStatus"></span>
+            <br>
+            <div class="container">
+                <h2 class="niceText center">M Itä</h2>
+                <div class="niceText metro" id="metukka">
+                    <table id="metro_timetable_e" class="niceText"></table>
+                </div>
+            </div>
+            <br>
+            <div class="container">
+                <h2 class="niceText center">M Länsi</h2>
+                <div class="niceText metro" id="metukka">
+                    <table id="metro_timetable_w" class="niceText"></table>
+                </div>
             </div>
         </div>
-        <div class="container container2">
+        <div class="container">
             <h2 class="niceText center">Dösät</h2>
             <div class="niceText bus" id="bus">
                 <table id="timetable" class="niceText"></table>
             </div>
         </div>
 
-        <div class="container container3">
-            <h2 class="niceText center">Metukka itään</h2>
-            <div class="niceText metro" id="metukka">
-                <table id="metro_timetable" class="niceText"></table>
-            </div>
-        </div>
-
-        <h2>tere</h2>
     </div>
 </body>
-<script src="functions.js">
+<script src="js/functions.js">
 </script>
 
 </html>
