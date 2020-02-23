@@ -111,6 +111,7 @@ table {
 .container {
     box-shadow: 3px 3px black;
     background-color: darkslategray;
+    margin-bottom: auto;
 }
 
 .busNumber {
