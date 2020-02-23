@@ -146,6 +146,14 @@ function getMetro(statid, amnt, direction) {
 }
 
 function initializeData(ms = 15000) {
+    // When ready...
+    window.addEventListener("load", function() {
+        // Set a timeout...
+        setTimeout(function() {
+            // Hide the address bar!
+            window.scrollTo(0, 1);
+        }, 0);
+    });
     startTime();
     updateData();
     setInterval(function() {
