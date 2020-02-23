@@ -60,7 +60,7 @@ function getBuses(amnt, elem, station) {
                     }
                 }
                 busNumber.innerHTML = departure.trip.route.shortName;
-                routeName.innerHTML = departure.headsign;
+                routeName.innerHTML = departure.headsign.split(" via")[0];
                 time.innerHTML = convertedTime;
             }
             var oldtable = document.getElementById(elem);

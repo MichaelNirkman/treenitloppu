@@ -143,3 +143,7 @@ table {
 td {
     padding: 10px;
 }
+
+.routeName {
+    font-size: 30px;
+}
