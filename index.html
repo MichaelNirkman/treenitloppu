@@ -4,62 +4,32 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/all.css">
     <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
-    <title>Herttoniemi Cheat Sheet</title>
+    <title>Escape Konala</title>
 </head>
 
 <body class="mainbod" onload="initializeData(15000)">
-
-    <div class="topContainer">
-        <div name="mainheading" class="niceText mainheading">
-            <h1>Herttoniemi Cheat Sheet<br>Mikko Nirkko 2020</h1>
-        </div>
-        <span id="currentTime" class="currentTime niceText mainheading"></span>
-        <span></span>
-    </div>
     <div class="mainContainer">
-        <div class="leftStuff">
-            <div class="container bikes">
-                <h2 class="niceText center">Tsygät</h2>
-                <div id="bikeblock1" class="niceText">
-                    <span id="stationTitle1" class="stationTitle"></span>
-                    <span id="stationStatus1" class="stationStatus"></span>
-                </div>
-                <br/>
-                <div id="bikeblock2" class="niceText">
-                    <span id="stationTitle2" class="stationTitle"></span>
-                    <span id="stationStatus2" class="stationStatus"></span>
-                </div>
-                <br>
-                <div id="bikeblock3" class="niceText">
-                    <span id="stationTitle3" class="stationTitle"></span>
-                    <span id="stationStatus3" class="stationStatus"></span>
-                </div>
-            </div>
-            <div class="container">
-                <h2 class="niceText center">M Itä</h2>
-                <div class="niceText metro" id="metukka">
-                    <table id="metro_timetable_e" class="niceText"></table>
-                </div>
-            </div>
-            <div class="container">
-                <h2 class="niceText center">M Länsi</h2>
-                <div class="niceText metro" id="metukka">
-                    <table id="metro_timetable_w" class="niceText"></table>
-                </div>
+        <h1 class="mainheading niceText">Escape Konala</h1>
+        <p class="timer niceText" id="time">joo</p>
+        <div class="container">
+            <h2 class="niceText center">Malminkartanontie</h2>
+            <div class="niceText bus" id="malminkartanontie">
+                <table id="timetable" class="niceText"></table>
             </div>
         </div>
+
         <div class="container">
-            <h2 class="niceText center">Dösät</h2>
-            <div class="niceText bus" id="bus">
+            <h2 class="niceText center">Vihdintie</h2>
+            <div class="niceText bus" id="vihdintie">
                 <table id="timetable" class="niceText"></table>
             </div>
         </div>
 
     </div>
     <div name="footer" class="niceText footer">
-        <h1>Herttoniemi Cheat Sheet<br>Mikko Nirkko 2020</h1>
+        <br>
+        <h1>Mikko Nirkko 2020</h1>
     </div>
 </body>
 <script src="js/functions.js">

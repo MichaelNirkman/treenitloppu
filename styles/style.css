@@ -7,6 +7,16 @@
     display: none;
 }
 
+.mainheading {
+    font-size: 80px;
+    line-height: 0px;
+}
+
+.timer {
+    font-size: 60px;
+    line-height: 0px;
+}
+
 .mainContainer {
     display: grid;
     grid-auto-flow: row;
@@ -17,27 +27,6 @@
 
 .footer {
     display: block;
-}
-
-@media (min-width:1000px) {
-    .mainContainer {
-        display: grid;
-        grid-auto-flow: column;
-        justify-items: center;
-    }
-    .topContainer {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 40px;
-        grid-auto-rows: minmax(100px, auto);
-    }
-    .leftStuff {
-        display: flex;
-        flex-direction: column;
-    }
-    .footer {
-        display: none;
-    }
 }
 
 .leftStuff {
