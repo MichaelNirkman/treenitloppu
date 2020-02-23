@@ -170,6 +170,7 @@ function initializeData(ms = 15000) {
 function updateData() {
     getBikes("256", "stationTitle1", "stationStatus1");
     getBikes("259", "stationTitle2", "stationStatus2");
+    getBikes("267", "stationTitle3", "stationStatus3");
     getBuses(9);
     getMetro('"HSL:1431601"', 3, "metro_timetable_e");
     getMetro('"HSL:1431602"', 3, "metro_timetable_w");
