@@ -60,7 +60,7 @@ function getBuses(amnt) {
     fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query: '{  stop(id: "HSL:1431102") {    name      stoptimesWithoutPatterns(numberOfDepartures: ' + amnt + ') {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
+            body: JSON.stringify({ query: '{  stop(id: "HSL:1431102") {    name      stoptimesWithoutPatterns(numberOfDepartures: ' + amnt + ') {     scheduledDeparture  realtimeDeparture  serviceDay   headsign trip{route{shortName}}}  }}' }),
         })
         .then(function(response) {
             return response.json();
@@ -86,14 +86,17 @@ function getBuses(amnt) {
                 if (timeSecs > myJson.data.stop.stoptimesWithoutPatterns[i].scheduledDeparture) {
                     time.className += " late";
                 }
-                var date = new Date(null);
                 var curdate = new Date();
-                date.setSeconds(curdate.getSeconds() + parseInt(timeSecs)); // specify value for SECONDS here
-                var date_diff = curdate - date;
-                var diff_minutes = 60 - (Math.round(((date_diff % 86400000) % 3600000) / 60000)); // minutes
-                var convertedTime = date.toISOString().substr(11, 5);
-                if (diff_minutes < 25) {
-                    convertedTime = diff_minutes + " min"
+                var date = new Date(myJson.data.stop.stoptimesWithoutPatterns[i].serviceDay * 1000 + (timeSecs * 1000));
+                var date_diff = date - curdate;
+                var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+                var convertedTime = new Date(date - tzoffset).toISOString().substr(11, 5);
+                if (date_diff < 1500000) {
+                    var diffminutes = new Date(date_diff).getMinutes()
+                    convertedTime = diffminutes.toString() + " min"
+                    if (diffminutes == 0) {
+                        convertedTime = "<1 min";
+                    }
                 }
                 busNumber.innerHTML = myJson.data.stop.stoptimesWithoutPatterns[i].trip.route.shortName;
                 routeName.innerHTML = myJson.data.stop.stoptimesWithoutPatterns[i].headsign;
@@ -108,7 +111,7 @@ function getMetro(statid, amnt, direction) {
     fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query: '{  stop(id: ' + statid + ') {    name      stoptimesWithoutPatterns(numberOfDepartures: ' + amnt + ') {     scheduledDeparture  realtimeDeparture   headsign trip{route{shortName}}}  }}' }),
+            body: JSON.stringify({ query: '{  stop(id: ' + statid + ') {    name      stoptimesWithoutPatterns(numberOfDepartures: ' + amnt + ') {     scheduledDeparture  realtimeDeparture  serviceDay   headsign trip{route{shortName}}}  }}' }),
         })
         .then(function(response) {
             return response.json();
@@ -128,14 +131,17 @@ function getMetro(statid, amnt, direction) {
                 var time = row.insertCell(1);
                 time.className = "metrotime niceText";
                 var timeSecs = myJson.data.stop.stoptimesWithoutPatterns[i].realtimeDeparture;
-                var date = new Date(null);
                 var curdate = new Date();
-                date.setSeconds(curdate.getSeconds() + parseInt(timeSecs)); // specify value for SECONDS here
-                var date_diff = curdate - date;
-                var diff_minutes = 60 - (Math.round(((date_diff % 86400000) % 3600000) / 60000)); // minutes
-                var convertedTime = date.toISOString().substr(11, 5);
-                if (diff_minutes < 25) {
-                    convertedTime = diff_minutes + " min"
+                var date = new Date(myJson.data.stop.stoptimesWithoutPatterns[i].serviceDay * 1000 + (timeSecs * 1000));
+                var date_diff = date - curdate;
+                var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+                var convertedTime = new Date(date - tzoffset).toISOString().substr(11, 5);
+                if (date_diff < 1500000) {
+                    var diffminutes = new Date(date_diff).getMinutes()
+                    convertedTime = diffminutes.toString() + " min"
+                    if (diffminutes == 0) {
+                        convertedTime = "<1 min";
+                    }
                 }
                 routeName.innerHTML = myJson.data.stop.stoptimesWithoutPatterns[i].headsign;
                 time.innerHTML = convertedTime;
@@ -164,7 +170,7 @@ function initializeData(ms = 15000) {
 function updateData() {
     getBikes("256", "stationTitle1", "stationStatus1");
     getBikes("259", "stationTitle2", "stationStatus2");
-    getBuses(7);
-    getMetro('"HSL:1431601"', 2, "metro_timetable_e");
-    getMetro('"HSL:1431602"', 2, "metro_timetable_w");
+    getBuses(9);
+    getMetro('"HSL:1431601"', 3, "metro_timetable_e");
+    getMetro('"HSL:1431602"', 3, "metro_timetable_w");
 }
