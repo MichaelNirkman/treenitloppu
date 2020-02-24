@@ -77,12 +77,12 @@ function initializeData(ms = 15000) {
             window.scrollTo(0, 1);
         }, 0);
     });
-    navigator.serviceWorker.register('js/sw.js', {
-        scope: '/treenitloppu/*/'
+    navigator.serviceWorker.register('sw.js', {
+        scope: 'treenitloppu/'
     });
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('js/sw.js').then(function(registration) {
+            navigator.serviceWorker.register('sw.js').then(function(registration) {
                 // Registration was successful
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
             }, function(err) {
