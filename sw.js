@@ -1,9 +1,9 @@
 self.addEventListener('install', function(event) {
     var CACHE_NAME = 'my-site-cache-v1';
     var urlsToCache = [
-        'treenitloppu/',
-        'treenitloppu/js/functions.js',
-        'treenitloppu/styles/style.css'
+        '/',
+        '/js/functions.js',
+        '/styles/style.css'
     ];
 
     self.addEventListener('install', function(event) {
