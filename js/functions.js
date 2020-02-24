@@ -77,6 +77,9 @@ function initializeData(ms = 15000) {
             window.scrollTo(0, 1);
         }, 0);
     });
+    navigator.serviceWorker.register('js/sw.js', {
+        scope: '/treenitloppu/'
+    });
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
             navigator.serviceWorker.register('js/sw.js').then(function(registration) {
