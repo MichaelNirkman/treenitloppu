@@ -25,7 +25,7 @@
             "density": "2.0"
         },
         {
-            "src": "\/android-icon-144x144.png",
+            "src": "\/treenitloppu\/android-icon-144x144.png",
             "sizes": "144x144",
             "type": "image\/png",
             "density": "3.0"
@@ -37,9 +37,9 @@
             "density": "4.0"
         }
     ],
-    "start_url": "/",
+    "start_url": "/treenitloppu/",
     "background_color": "#000000",
-    "scope": "/",
+    "scope": "/treenitloppu/",
     "theme_color": "#000000",
     "display": "standalone",
     "orientation": "portrait"
