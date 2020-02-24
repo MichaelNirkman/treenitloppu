@@ -37,7 +37,7 @@
             "density": "4.0"
         }
     ],
-    "start_url": "treenitloppu/",
+    "start_url": "/",
     "background_color": "#000000",
     "scope": "treenitloppu/",
     "theme_color": "#000000",
