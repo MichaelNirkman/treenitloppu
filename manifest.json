@@ -39,7 +39,7 @@
     ],
     "start_url": "treenitloppu/",
     "background_color": "#000000",
-    "scope": "treenitloppu/",
+    "scope": "treenitloppu/*/",
     "theme_color": "#000000",
     "display": "standalone",
     "orientation": "portrait"
