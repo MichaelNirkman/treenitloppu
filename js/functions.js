@@ -86,5 +86,5 @@ function initializeData(ms = 15000) {
 
 function updateData() {
     getBuses(5, "malminkartanontie", '"HSL:1320111"');
-    getBuses(5, "vihdintie", '"HSL:4200202"');
+    getBuses(5, "vihdintie", '"HSL:1320294"');
 }
