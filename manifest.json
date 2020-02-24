@@ -36,5 +36,10 @@
             "type": "image\/png",
             "density": "4.0"
         }
-    ]
+    ],
+    "start_url": "/",
+    "background_color": "#000000",
+    "scope": "/",
+    "theme_color": "#000000",
+    "display": "fullscreeen"
 }
